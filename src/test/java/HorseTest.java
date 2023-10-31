@@ -31,9 +31,9 @@ class HorseTest {
 
     @DisplayName("firstConstructorParameterEmptyStringOrSimbolShouldThrowIllegalArgumentException")
     @ParameterizedTest
-    @CsvSource({"'', 2.1, 2", "',,2", " , 2.1, 2"})
+    @CsvSource({"'', 2.1, 2", " , 2.1, 2"})
     @Test
-    void fcp3 (String name, double height, int age) {
+    void fcp3(String name, double height, int age) {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new Horse(name, height, age));
     }
 
