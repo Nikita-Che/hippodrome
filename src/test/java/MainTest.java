@@ -11,5 +11,6 @@ class MainTest {
         assertTimeout(java.time.Duration.ofSeconds(20), () -> {
             Main.main(new String[]{});
         });
+        //TEST
     }
 }
