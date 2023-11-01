@@ -12,5 +12,7 @@ class MainTest {
             Main.main(new String[]{});
         });
         //TEST
+        //TEST
+        //TEST
     }
 }
