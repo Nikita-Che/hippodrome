@@ -1,0 +1,16 @@
+
+2023-11-01 15:59:20,286 DEBUG MyClass - This is a debug message.
+2023-11-01 15:59:20,289 INFO  MyClass - This is an info message.
+2023-11-01 15:59:20,289 ERROR MyClass - This is an error message.
+2023-11-01 16:00:00,474 DEBUG MyClass - This is a debug message.
+2023-11-01 16:00:00,476 INFO  MyClass - This is an info message.
+2023-11-01 16:00:00,476 ERROR MyClass - This is an error message.
+2023-11-01 16:00:02,698 DEBUG MyClass - This is a debug message.
+2023-11-01 16:00:02,701 INFO  MyClass - This is an info message.
+2023-11-01 16:00:02,702 ERROR MyClass - This is an error message.
+2023-11-01 16:00:16,446 DEBUG MyClass - This is a debug message.
+2023-11-01 16:00:16,448 INFO  MyClass - This is an info message.
+2023-11-01 16:00:16,449 ERROR MyClass - This is an error message.
+2023-11-01 16:09:39,766 INFO  Main - Начало скачек. Количество участников:7
+2023-11-01 16:11:09,887 INFO  Main - Начало скачек. Количество участников: 7
+2023-11-01 16:11:30,472 INFO  Main - Окончание скачек. Победитель: Cherry
