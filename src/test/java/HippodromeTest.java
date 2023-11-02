@@ -5,7 +5,6 @@ import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 class HippodromeTest {
@@ -25,7 +24,7 @@ class HippodromeTest {
     @Test
     void cp2() {
         Throwable throwable = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            List<Horse> horses = Collections.emptyList();
+//            List<Horse> horses = Collections.emptyList();
             Hippodrome hippodrome = new Hippodrome(horses);
         });
         Assertions.assertEquals(IllegalArgumentException.class, throwable.getClass());
