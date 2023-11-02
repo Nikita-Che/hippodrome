@@ -8,24 +8,26 @@ import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import java.lang.reflect.Field;
 
 class HorseTest {
 
-    @DisplayName("nameCantBeNull")
+    @DisplayName("nameCanNotBeNull")
     @Test
     void fcp1() {
-        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-            Horse horse = new Horse(null, 2.1, 2);
-        });
+//        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+//            Horse horse = new Horse(null, 2.1, 2);
+//        });
+//
+//        Assertions.assertEquals(IllegalArgumentException.class, exception.getClass());
 
-        Assertions.assertEquals(IllegalArgumentException.class, exception.getClass());
+        Assertions.assertThrows(IllegalArgumentException.class, ()->new Horse(null, 2.1, 2));
     }
 
     @DisplayName("nameThrowMessageCannotBeNull")
     @Test
     void fcp2() {
-        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+        Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             Horse horse = new Horse(null, 2.1, 2);
         });
 
@@ -43,7 +45,7 @@ class HorseTest {
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "\t", "  ", "\n", " \t \n "})
     void fcp1(String name) {
-        Throwable exception = assertThrows(IllegalArgumentException.class, () -> new Horse(name, 2.1, 1));
+        Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> new Horse(name, 2.1, 1));
         Assertions.assertEquals("Name cannot be blank.", exception.getMessage());
     }
 
@@ -56,7 +58,7 @@ class HorseTest {
     @DisplayName("speedShowMsgSpeedCannotBeNegative")
     @Test
     void scp2() {
-        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+        Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             Horse horse = new Horse("Кляча", -1, 1);
         });
 
@@ -72,7 +74,7 @@ class HorseTest {
     @DisplayName("distanceShowMsgDistanceCannotBeNegative")
     @Test
     void tcp2() {
-        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+        Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             Horse horse = new Horse("Кляча", 2.0, -1);
         });
 
@@ -80,11 +82,18 @@ class HorseTest {
     }
 
     @Test
-    void getHorseName() {
+    void getHorseName() throws NoSuchFieldException, IllegalAccessException {
         Horse horse = new Horse("Кляча", 0.1, 1);
         String actual = horse.getName();
         String expected = "Кляча";
         Assertions.assertEquals(expected, actual);
+
+        //разбор предлагает рефлексию. Надо ли так делать?
+        Horse h = new Horse("Кляча", 0.1, 1);
+        Field name = Horse.class.getDeclaredField("name");
+        name.setAccessible(true);
+        String nameValue = (String) name.get(h);
+        Assertions.assertEquals("Кляча", nameValue);
     }
 
     @Test
@@ -112,7 +121,6 @@ class HorseTest {
     }
 
     @ExtendWith(MockitoExtension.class)
-
     @Test
     void move() {
         try (MockedStatic<Horse> horseMockedStatic = Mockito.mockStatic(Horse.class)) {
