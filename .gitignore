@@ -2,7 +2,6 @@
 /out/
 
 .idea
-hippodrome.log
 src/logs/hippodrome.log
 *.log
 target
