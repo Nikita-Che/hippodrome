@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class HorseTest {
 
-    @DisplayName("firstConstructorParameterCantBeNull")
+    @DisplayName("nameCantBeNull")
     @Test
     void fcp1() {
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -22,7 +22,7 @@ class HorseTest {
         Assertions.assertEquals(IllegalArgumentException.class, exception.getClass());
     }
 
-    @DisplayName("firstConstructorParameterThrowMessageCannotBeNull")
+    @DisplayName("nameThrowMessageCannotBeNull")
     @Test
     void fcp2() {
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -32,14 +32,14 @@ class HorseTest {
         Assertions.assertEquals("Name cannot be null.", exception.getMessage());
     }
 
-    @DisplayName("firstConstructorParameterEmptyStringOrSimbolShouldThrowIllegalArgumentException")
+    @DisplayName("nameEmptyStringOrSimbolShouldThrowIllegalArgumentException")
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "\t", "  ", "\n", " \t \n "})
     void fcp3(String blankName) {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new Horse(blankName, 2.1, 1));
     }
 
-    @DisplayName("firstConstructorParameterThrowMessageCannotBeBlanc")
+    @DisplayName("nameThrowMessageCannotBeBlanc")
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "\t", "  ", "\n", " \t \n "})
     void fcp1(String name) {
@@ -47,13 +47,13 @@ class HorseTest {
         Assertions.assertEquals("Name cannot be blank.", exception.getMessage());
     }
 
-    @DisplayName("secondConstructorParameterThrowIllegalArgumentException")
+    @DisplayName("speedThrowIllegalArgumentException")
     @Test
     void scp1() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new Horse("Кляча", -1, 1));
     }
 
-    @DisplayName("secondConstructorParameterShowMsgSpeedCannotBeNegative")
+    @DisplayName("speedShowMsgSpeedCannotBeNegative")
     @Test
     void scp2() {
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -63,13 +63,13 @@ class HorseTest {
         Assertions.assertEquals("Speed cannot be negative.", exception.getMessage());
     }
 
-    @DisplayName("thirdConstructorParameterThrowIllegalArgumentException")
+    @DisplayName("distanceThrowIllegalArgumentException")
     @Test
     void tcp1() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new Horse("Кляча", 2.0, -1));
     }
 
-    @DisplayName("thirdConstructorParameterShowMsgDistanceCannotBeNegative")
+    @DisplayName("distanceShowMsgDistanceCannotBeNegative")
     @Test
     void tcp2() {
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
