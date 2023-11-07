@@ -8,11 +8,11 @@ import java.util.Arrays;
 import java.util.List;
 
 class HippodromeTest {
-    public static List<Horse> horses = new ArrayList<>();
+    private List<Horse> horses = new ArrayList<>();
 
     @DisplayName("shouldThrowExceptionAndMessage")
     @Test
-    void cp1() {
+    void nameException() {
         Throwable throwable = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             Hippodrome hippodrome = new Hippodrome(null);
         });
@@ -22,7 +22,7 @@ class HippodromeTest {
 
     @DisplayName("shouldThrowExceptionWithEmptyList")
     @Test
-    void cp2() {
+    void horsesEmptyListTest() {
         Throwable throwable = Assertions.assertThrows(IllegalArgumentException.class, () -> {
 //            List<Horse> horses = Collections.emptyList();
             Hippodrome hippodrome = new Hippodrome(horses);

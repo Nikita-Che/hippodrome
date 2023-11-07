@@ -14,7 +14,7 @@ class HorseTest {
 
     @DisplayName("nameCanNotBeNull")
     @Test
-    void fcp1() {
+    void nameNull() {
 //        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 //            Horse horse = new Horse(null, 2.1, 2);
 //        });
@@ -26,7 +26,7 @@ class HorseTest {
 
     @DisplayName("nameThrowMessageCannotBeNull")
     @Test
-    void fcp2() {
+    void nameThrowMessage() {
         Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             Horse horse = new Horse(null, 2.1, 2);
         });
@@ -37,27 +37,27 @@ class HorseTest {
     @DisplayName("nameEmptyStringOrSimbolShouldThrowIllegalArgumentException")
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "\t", "  ", "\n", " \t \n "})
-    void fcp3(String blankName) {
+    void nameEmptyString(String blankName) {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new Horse(blankName, 2.1, 1));
     }
 
     @DisplayName("nameThrowMessageCannotBeBlanc")
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "\t", "  ", "\n", " \t \n "})
-    void fcp1(String name) {
+    void nameThrowMessageBlanc(String name) {
         Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> new Horse(name, 2.1, 1));
         Assertions.assertEquals("Name cannot be blank.", exception.getMessage());
     }
 
     @DisplayName("speedThrowIllegalArgumentException")
     @Test
-    void scp1() {
+    void speedThrowException() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new Horse("Кляча", -1, 1));
     }
 
     @DisplayName("speedShowMsgSpeedCannotBeNegative")
     @Test
-    void scp2() {
+    void speedShowMessage() {
         Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             Horse horse = new Horse("Кляча", -1, 1);
         });
@@ -67,13 +67,13 @@ class HorseTest {
 
     @DisplayName("distanceThrowIllegalArgumentException")
     @Test
-    void tcp1() {
+    void distanceException() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new Horse("Кляча", 2.0, -1));
     }
 
     @DisplayName("distanceShowMsgDistanceCannotBeNegative")
     @Test
-    void tcp2() {
+    void distanceMessage() {
         Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             Horse horse = new Horse("Кляча", 2.0, -1);
         });
